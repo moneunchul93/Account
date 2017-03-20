@@ -8,19 +8,26 @@ public class AccountTest {
 		
 		input = new Scanner(System.in);
 		input2 = new Scanner(System.in);
-		Account account1 = new Account(50);
-		Account account2 = new Account(0);
+		CheckingAccount account3 = new CheckingAccount(100,-50,0.01,0.07);
+		CheckingAccount account4 = new CheckingAccount(100,-50,0.01,0.07);
 		
-		System.out.print("Enter withdrawal amount for account1: ");
+		System.out.printf("account1 balance: $%f\n",account3.getBalance());
+		System.out.printf("account2 balance: $%f\n",account4.getBalance());
+		System.out.print("Enter deposit amount for account1: ");
 		double number = input.nextDouble();
-		account1.debit(number);
-		System.out.printf("account1 balance: $%f\n",account1.getBalance());
-		System.out.printf("account2 balance: $%f\n",account2.getBalance());
+		account3.credit(number);
 
+		System.out.printf("account1 balance: $%f\n",account3.getBalance());
+		System.out.printf("account2 balance: $%f\n",account4.getBalance());
 		System.out.print("Enter withdrawal amount for account2: ");
 		double number2 = input2.nextDouble();
-		account2.debit(number2);
-		System.out.printf("account1 balance: $%f\n",account1.getBalance());
-		System.out.printf("account2 balance: $%f\n",account2.getBalance());
+		account4.debit(number2);
+		
+		System.out.printf("next month!\n",account3.getBalance());
+		account3.nextMonth();
+		account4.nextMonth();
+		System.out.printf("account1 balance: $%f\n",account3.getBalance());
+		System.out.printf("account2 balance: $%f\n",account4.getBalance());
+
 	}
 }

@@ -1,7 +1,7 @@
 public class Account {
 	private double balance;
 	
-	public Account(double num){ //생성자
+	Account(double num){ //생성자
 		balance = num;
 	}
 	
@@ -9,7 +9,7 @@ public class Account {
 		return balance;
 	}
 	
-	public void setBalance(double m){ //잔액수정
+	protected void setBalance(double m){ //잔액수정
 		balance = m;
 	}
 	
@@ -21,7 +21,7 @@ public class Account {
 		
 		System.out.printf("subtracting %f from account1 balance\n",number);
 		if(balance > number){
-			balance = balance - number;
+			balance -= number;
 		}else{
 			System.out.print("Debit amount exceeded account balance\n");
 		}

@@ -4,6 +4,22 @@ public class SavingsAccount extends Account {
 	private double interest;
 	public double temp = getBalance();
 	
+	public double EstimateValue(int month){
+		
+		if(month <= 12){
+			for(int i = 0; i < month; i++){
+				temp = temp*(1+interest);
+				setBalance(temp);
+			}
+		}
+	
+		return getBalance();
+	}
+	
+	public String toString(){
+		return String.format("SavingAccount_Balance: %f", getBalance());
+	}
+	
 	protected void setMonth(int m){ //ÀÜ¾×¼öÁ¤
 		month += m;
 	}

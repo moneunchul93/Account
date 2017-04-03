@@ -1,20 +1,34 @@
 
-public class CheckingAccount extends Account {
-	private double credit_limit;
+public class CheckingAccount extends Account{
+	private double creditLimit;
 	private double interest;
-	private double loan_interest;
+	private double loanInterest;
+	
+	public double EstimateValue(int month){
+		
+		if(getBalance() > 0){
+			setBalance(getBalance() + getBalance()*interest*month);
+		}else if(getBalance() < 0){
+			setBalance(getBalance() + getBalance()*loanInterest*month);
+		}
+		return getBalance();
+	}
+	
+	public String toString(){
+		return String.format("CheckingAccount_Balance: %f", getBalance());
+	}
 	
 	public CheckingAccount(double balance, double a, double b, double c){
 		super(balance);
-		credit_limit = -a;
+		creditLimit = -a;
 		interest = b;
-		loan_interest = c;
+		loanInterest = c;
 	}
 	
 	@Override
 	public void debit(double number){ //Ãâ±Ý
 		
-		if(credit_limit < getBalance() - number){
+		if(creditLimit < getBalance() - number){
 			setBalance(getBalance() - number);
 		}else{
 			System.out.print("Debit amount exceeded credit_limit\n");
@@ -25,14 +39,14 @@ public class CheckingAccount extends Account {
 		if(getBalance() > 0){
 			setBalance(getBalance() + getBalance()*interest);
 		}else if(getBalance() < 0){
-			setBalance(getBalance() + getBalance()*loan_interest);
+			setBalance(getBalance() + getBalance()*loanInterest);
 		}
 	}
 	
 	@Override
 	public double getWithdrawableAccount(){
-		if((getBalance() - credit_limit) >= 0){
-			return getBalance() - credit_limit;
+		if((getBalance() - creditLimit) >= 0){
+			return getBalance() - creditLimit;
 		}else{
 			return 0;
 		}
@@ -45,14 +59,14 @@ public class CheckingAccount extends Account {
 		if(getBalance() > 0){
 			setBalance(getBalance() + getBalance()*interest*time);
 		}else if(getBalance() < 0){
-			setBalance(getBalance() + getBalance()*loan_interest*time);
+			setBalance(getBalance() + getBalance()*loanInterest*time);
 		}
 		
 		return intresttime;
 	}
 	
 	public boolean isBankrupted(){
-		if(getBalance() < credit_limit){
+		if(getBalance() < creditLimit){
 			return true;
 		}else{
 			return false;

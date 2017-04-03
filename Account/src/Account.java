@@ -1,4 +1,4 @@
-public abstract class Account {
+public abstract class Account implements Valuable{
 	private double balance;
 	
 	Account(double num){ //»ý¼ºÀÚ

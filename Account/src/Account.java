@@ -17,13 +17,16 @@ public abstract class Account implements Valuable{
 		balance += number;
 	}
 	
-	public void debit(double number){ //출금
-		
-		System.out.printf("subtracting %f from account1 balance\n",number);
-		if(balance > number){
-			balance -= number;
+	public void debit(double number) throws Exception { //출금
+		if(number > 0){
+			System.out.printf("subtracting %f from account1 balance\n",number);
+			if(balance > number){
+				balance -= number;
+			}else{
+				throw new Exception("Debit amount exceeded account balance");
+			}
 		}else{
-			System.out.print("Debit amount exceeded account balance\n");
+			throw new Exception("음수를 입력했습니다!");
 		}
 	}
 	

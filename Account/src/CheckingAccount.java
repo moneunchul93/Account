@@ -26,12 +26,15 @@ public class CheckingAccount extends Account{
 	}
 	
 	@Override
-	public void debit(double number){ //출금
-		
-		if(creditLimit < getBalance() - number){
-			setBalance(getBalance() - number);
+	public void debit(double number) throws Exception { //출금
+		if(number > 0){
+			if(creditLimit < getBalance() - number){
+				setBalance(getBalance() - number);
+			}else{
+				throw new Exception("Debit amount exceeded account balance");
+			}
 		}else{
-			System.out.print("Debit amount exceeded credit_limit\n");
+			throw new Exception("음수를 입력했습니다!");
 		}
 	}
 	

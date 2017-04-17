@@ -5,15 +5,26 @@ public class SavingsAccount extends Account {
 	public double temp = getBalance();
 	
 	public double EstimateValue(int month){
+		double temp = getBalance();
 		
 		if(month <= 12){
 			for(int i = 0; i < month; i++){
 				temp = temp*(1+interest);
-				setBalance(temp);
 			}
 		}
 	
-		return getBalance();
+		return temp;
+	}
+	
+	//overloading
+	public double EstimateValue(){
+		double temp = 0;
+		
+		for(int i = 0; i < 1; i++){
+			temp = this.temp*(1+interest);
+		}
+	
+		return temp;
 	}
 	
 	public String toString(){
@@ -52,7 +63,7 @@ public class SavingsAccount extends Account {
 	}
 	
 	@Override
-	public double passTime(int time){
+	public void passTime(int time){
 		setMonth(time);
 		
 		if(month <= 12){
@@ -64,8 +75,21 @@ public class SavingsAccount extends Account {
 				setBalance(temp);
 			}
 		}
-		
-		return getBalance();
+
 	}
 	
+	//overloading
+	public void passTime(){
+		setMonth(1);
+		
+		if(month <= 12){
+			for(int i = 0; i < 1; i++){
+				//setBalance(getBalance()*(1+interest));
+				temp = temp*(1+interest);
+			}
+			if(month >= 12){
+				setBalance(temp);
+			}
+		}
+	}
 }

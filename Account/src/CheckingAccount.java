@@ -5,13 +5,26 @@ public class CheckingAccount extends Account{
 	private double loanInterest;
 	
 	public double EstimateValue(int month){
+		double temp = 0;
 		
 		if(getBalance() > 0){
-			setBalance(getBalance() + getBalance()*interest*month);
+			temp = getBalance() + getBalance()*interest*month;
 		}else if(getBalance() < 0){
-			setBalance(getBalance() + getBalance()*loanInterest*month);
+			temp = getBalance() + getBalance()*loanInterest*month;
 		}
-		return getBalance();
+		return temp;
+	}
+	
+	//overloading
+	public double EstimateValue(){
+		double temp = 0;
+		
+		if(getBalance() > 0){
+			temp = getBalance() + getBalance()*interest*1;
+		}else if(getBalance() < 0){
+			temp = getBalance() + getBalance()*loanInterest*1;
+		}
+		return temp;
 	}
 	
 	public String toString(){
@@ -56,8 +69,7 @@ public class CheckingAccount extends Account{
 	}
 	
 	@Override
-	public double passTime(int time){
-		double intresttime = 0;
+	public void passTime(int time){
 		
 		if(getBalance() > 0){
 			setBalance(getBalance() + getBalance()*interest*time);
@@ -65,7 +77,18 @@ public class CheckingAccount extends Account{
 			setBalance(getBalance() + getBalance()*loanInterest*time);
 		}
 		
-		return intresttime;
+	}
+	
+	//overloading
+	public void passTime(){
+		
+		if(getBalance() > 0){
+			setBalance(getBalance() + getBalance()*interest*1);
+		}else if(getBalance() < 0){
+			setBalance(getBalance() + getBalance()*loanInterest*1);
+		}
+		
+		
 	}
 	
 	public boolean isBankrupted(){

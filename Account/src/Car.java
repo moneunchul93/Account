@@ -5,14 +5,28 @@ public class Car implements Valuable{
 	private int checkinitial = 0;
 	
 	public double EstimateValue(int month){
+		double temp = price;
+		
 		if(checkinitial == 0){
-			price = price - price*0.2;
-			checkinitial = 1;
+			temp = temp - temp*0.2;
 		}
 		for(int i = 0; i < month; i++){
-			price = price - price*0.01;
+			temp = temp - temp*0.01;
 		}
-		return price;
+		return temp;
+	}
+	
+	//overloading
+	public double EstimateValue(){
+		double temp = price;
+		
+		if(checkinitial == 0){
+			temp = temp - temp*0.2;
+		}
+		for(int i = 0; i < 1; i++){
+			temp = temp - temp*0.01;
+		}
+		return temp;
 	}
 	
 	public Car(String name, double price){

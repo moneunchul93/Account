@@ -7,6 +7,11 @@ public class Human implements Valuable{
 			return Double.POSITIVE_INFINITY;
 	}
 	
+	//overloading
+	public double EstimateValue(){
+		return Double.POSITIVE_INFINITY;
+	}
+	
 	public Human(String name, int age){
 		this.name = name;
 		this.age = age;
